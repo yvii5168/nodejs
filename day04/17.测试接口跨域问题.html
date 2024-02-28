@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.staticfile.net/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+  <button id="btnGET">GET</button>
+  <div>==============================</div>
+  <button id="btnPOST">POST</button>
+  <div>==============================</div>
+  <button id="btnDELETE">DELETE</button>
+  <div>==============================</div>
+  <button id="btnJSONP">JSONP</button>
+  
+  <script>
+    $(function() {
+      // 1、这个是GET接口
+      $('#btnGET').on('click', function () {
+        $.ajax({
+          type: 'GET',
+          url:'http://127.0.0.1:8080/api/get',
+          data:{name: '张三', age: 20},
+          success: function(res) {
+            console.log(res);  
+          }
+        });
+      });
+      // 2、这个是POST接口
+      $('#btnPOST').on('click', function () {
+        $.ajax({
+          type: 'POST',
+          url:'http://127.0.0.1:8080/api/post',
+          data:{bookname: '水浒传', author: '施耐庵'},
+          success: function(res) {
+            console.log(res);  
+          }
+        });
+      });
+      // 3、为删除按钮绑定点击事件处理函数
+      $('#btnDELETE').on('click', function() {
+        $.ajax({
+          type:'DELETE',
+          url:'http://127.0.0.1:8080/api/delete',
+          success: function (res) {
+            console.log(res);
+          }
+        });
+      })
+      // 4、为JSONP按钮绑定点击事件处理函数
+      $('#btnJSONP').on('click', function() {
+        $.ajax({
+          type:'GET',
+          url:'http://127.0.0.1:8080/api/jsonp',
+          dataType: 'jsonp', // 不可省略，表示要发起JSONP的请求
+          success: function (res) {
+            console.log(res);
+          }
+        });
+      })
+    })
+  </script>
+</body>
+</html>

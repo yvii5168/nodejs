@@ -1,0 +1,1 @@
+console.log('加载了06.m1.js文件');
